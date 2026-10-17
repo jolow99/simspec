@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simspec"
+version = "0.1.0"
+description = "A typed spec language and thin runtime for LLM multi-agent game studies, with memo-based rational baselines"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {file = "LICENSE"}
+dependencies = [
+  "memo-lang>=1.3.2",
+  "jax>=0.4.30",
+  "numpy>=1.26",
+  "pydantic>=2.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-timeout>=2"]
+llm = ["httpx>=0.27"]
+pettingzoo = ["pettingzoo>=1.24", "gymnasium>=0.29"]
+
+[tool.setuptools]
+packages = {find = {include = ["simspec*"]}}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+timeout = 600
